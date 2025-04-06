@@ -1,8 +1,5 @@
 package it.pizzeria.pizzeria_crud.model;
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,8 +21,9 @@ public class Pizza {
 
     private String nomePizza;
 
-    @Column(name ="descrizione")
-    Private String descrizione;
+    private String descrizione;
+
+    private String foto;
 
     private double prezzo;
 

@@ -1,5 +1,6 @@
 package it.pizzeria.pizzeria_crud.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,9 +11,10 @@ import jakarta.persistence.Table;
 - una descrizione
 - una foto (url)
 - un prezzo
-@Entity */
-
+ */
+@Entity
 @Table(name = "pizza")
+
 public class Pizza {
 
     @Id

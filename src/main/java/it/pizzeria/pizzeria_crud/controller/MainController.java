@@ -13,7 +13,7 @@ import it.pizzeria.pizzeria_crud.model.Pizza;
 import it.pizzeria.pizzeria_crud.repository.PizzaRepository;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("index")
 public class MainController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class MainController {
         List<Pizza> result = pizzaRepository.findAll();
         model.addAttribute("list", result);
 
-        return "/pizza/index";
+        return "index";
 
     }
 

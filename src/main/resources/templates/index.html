@@ -4,15 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pizzeria</title>
 
 </head>
 
 <body>
-    <!-- Tab Navigation -->
-    <div th:replace="fragments/header :: block-header"></div>
 
+    <h1>
+        Ciao
+    </h1>
 
+    <ul>
+        <li th:each="pizza : ${list}">
+            <span th:text="${pizza.nome}">Pizza Name</span>
+        </li>
+    </ul>
+
+    <div>
+
+    </div>
 </body>
 
 </html>

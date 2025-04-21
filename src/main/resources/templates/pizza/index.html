@@ -32,6 +32,13 @@
                     </thead>
                     <tbody>
 
+                        <tr th:if="${#lists.isEmpty(list)}">
+                            <td colspan="5" class="text-center text-muted ">
+
+                                <p class="text-white">Nessuna pizza trovata. 🍕</p>
+                            </td>
+                        </tr>
+
                         <tr th:each="pizza : ${list}">
                             <td th:text="${pizza.nomePizza}"></td>
                             <td th:text="${pizza.descrizione}"></td>

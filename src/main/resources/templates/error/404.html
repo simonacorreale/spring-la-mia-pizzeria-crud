@@ -13,7 +13,7 @@
     <div class="pt-5">
         <div class="container pt-5 text-center">
 
-            <div th:replace="fragments/fragments :: navbar('error')"></div>
+            <div th:replace="fragments/navbar :: navbar('error')"></div>
 
             <h2>Ci dispiace</h2>
             <!-- Error -->
@@ -26,13 +26,13 @@
                 </lottie-player>
             </div>
 
-            <div class="mt-4">
-                <a href="/index" class="btn btn-primary">Torna alla lista</a>
+            <div class="mt-4 mb-4">
+                <a th : href="@{'/''}" class="btn btn-primary">Torna alla lista</a>
             </div>
 
         </div>
     </div>
-
+    <div th:replace="fragments/footer :: footer"></div>
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.pizzeria.pizzeria_crud.model.Pizza;
 import it.pizzeria.pizzeria_crud.repository.PizzaRepository;
@@ -22,13 +23,20 @@ public class MainController {
     private PizzaRepository pizzaRepository;
 
     @GetMapping
-    public String index(Model model) {
+    public String index(Model model, @RequestParam(name = "keyword", required = false) String nomePizza) {
 
-        List<Pizza> result = pizzaRepository.findAll();
+        List<Pizza> result;
+
+        if (nomePizza != null && !nomePizza.isBlank()) {
+            result = pizzaRepository.findByNomePizzaContainingIgnoreCase(nomePizza);
+        } else {
+            result = pizzaRepository.findAll();
+        }
+
         model.addAttribute("list", result);
+        model.addAttribute("keyword", nomePizza);
 
         return "pizza/index";
-
     }
 
     @GetMapping("/show/{id}")

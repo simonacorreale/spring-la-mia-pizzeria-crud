@@ -5,53 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <title>🍕Disastro's Pizza</title>
 
 </head>
 
 <body>
     <!--Devo ricordarmi di mettere il path giusto se creo un file html e una cartella ogni i fragments-->
-    <div th:replace="fragments/fragments :: navbar('index')"></div>
+    <div th:replace="fragments/navbar :: navbar('index')"></div>
 
     <div class="pt-5">
-    </div>
+        <!--Inizio table-->
+        <div th:fragment="table">
+            <div class="container mt-4">
+                <h2>Lista delle pizze poco invitanti</h2>
+                <p>Sei pronto a riempirti di colesterolo? Sei nel posto giusto! Piatti da <strong>INFARTO</strong></p>
+                <table class="table table-dark table-striped table-hover mt-3">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrizione</th>
+                            <th>Prezzo</th>
+                            <th>Foto</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-    <!--Inizio table-->
-    <div th:fragment="table">
-        <div class="container mt-4">
-            <h2>Lista delle pizze poco invitanti</h2>
-            <p>Sei pronto a riempirti di colesterolo? Sei nel posto giusto! Piatti da <strong>INFARTO</strong></p>
-            <table class="table table-dark table-striped table-hover mt-3">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrizione</th>
-                        <th>Prezzo</th>
-                        <th>Foto</th>
-                    </tr>
-                </thead>
-                <tbody>
+                        <tr th:each="pizza : ${list}">
+                            <td th:text="${pizza.nomePizza}"></td>
+                            <td th:text="${pizza.descrizione}"></td>
 
-                    <tr th:each="pizza : ${list}">
-                        <td th:text="${pizza.nomePizza}"></td>
-                        <td th:text="${pizza.descrizione}"></td>
-
-                        <td th:text="${pizza.prezzo}"></td>
-                        <td>
-                            <img th:src="${pizza.foto}" alt="Foto Pizza poco invitante" width="80"
-                                class="rounded shadow-sm" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <td th:text="${pizza.prezzo}"></td>
+                            <td>
+                                <img th:src="${pizza.foto}" alt="Foto Pizza poco invitante" width="80"
+                                    class="rounded shadow-sm" />
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary text-white"
+                                    th:href="@{/index/show/{id}(id=${pizza.id})}">
+                                    Dettagli
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!--Fine table-->
 
-
-
-    <div th:replace="fragments/fragments :: footer"></div>
-
+    <div th:replace="fragments/footer :: footer"></div>
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 

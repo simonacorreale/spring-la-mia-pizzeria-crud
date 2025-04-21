@@ -12,7 +12,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="navbar(current)">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/index}">🍕Disastro's Pizza</a>
+            <a class="navbar-brand" th:href="@{/}">🍕Disastro's Pizza</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,15 +25,18 @@
                         <a class="nav-link" th:classAppend="${current == 'index'} ? 'active' : 'not-active'">Pizze</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:classAppend="${current == 'show'} ? 'active' : 'not-active'>Aggiungi pizza</a>
+                        <a class="nav-link" th:classAppend="${current == 'show'} ? 'active' : 'not-active'">Aggiungi
+                            pizza</a>
                     </li>
                 </ul>
-                <form class=" d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Cerca pizza..."
-                                aria-label="Search">
-                            <button class="btn btn-outline-light" type="submit">Cerca</button>
-                            </form>
+                <form class="d-flex" role="search" th:action="@{/index}" method="get">
+                    <input name="keyword" th:value="${keyword}" class="form-control me-2" type="search"
+                        placeholder="Cerca pizza..." aria-label="Search" />
+                    <button class="btn btn-outline-light" type="submit">Cerca</button>
+                </form>
+
             </div>
+
 
         </div>
     </nav>
@@ -41,13 +44,7 @@
 
     <!--Fine navbar-->
 
-    <!--Inizio footer-->
-    <div th:fragment="footer">
-        <footer class="bg-light text-center py-3">
-            <span class="text-muted">© 2025 Simona Correale</span>
-        </footer>
-    </div>
-    <!--Fine footer-->
+
 </body>
 
 </html>

@@ -13,7 +13,7 @@
     <div class="pt-5">
         <div class="container pt-5 text-center">
 
-            <div th:replace="fragments/fragments :: navbar"></div>
+            <div th:replace="fragments/fragments :: navbar('error')"></div>
 
             <h2>Ci dispiace</h2>
             <!-- Error -->
@@ -21,8 +21,8 @@
 
             <!-- lottie file embed, centrato -->
             <div class="d-flex justify-content-center my-4">
-                <lottie-player src="/404.json" background="transparent" speed="1" style="width: 300px; height: 300px;"
-                    loop autoplay>
+                <lottie-player th:src="@{/404.json}" background="transparent" speed="1"
+                    style="width: 300px; height: 300px;" loop autoplay>
                 </lottie-player>
             </div>
 

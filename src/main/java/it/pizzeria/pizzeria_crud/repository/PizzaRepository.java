@@ -1,5 +1,7 @@
 package it.pizzeria.pizzeria_crud.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import it.pizzeria.pizzeria_crud.model.Pizza;
@@ -13,7 +15,7 @@ import it.pizzeria.pizzeria_crud.model.Pizza;
 // e il suo id, quella che è definita è una interfaccia e qui dove si definiscono
 // le query per la tabella in questo caso la pizza richiama la sua collection list
 //_______
-// JPA è uno strato applicativo che si frppone tra il model e il controller
+// JPA è uno strato applicativo che si frappone tra il model e il controller
 //_______
 // Ogni tabella ha bisogno del suo JPA correlato
 // 1 Un oggetto che mappa la tabella e il JPA per le query
@@ -21,5 +23,10 @@ import it.pizzeria.pizzeria_crud.model.Pizza;
 // JPA si comporta come quindi l'interfaccia per esempio "pizza repositpry" potrà essere utilizzata nel contesto di spring
 // Bookrepository stacca la sua dipendenza passando il controllo (IoC) a JPR repository
 public interface PizzaRepository extends JpaRepository<Pizza, Integer> {
+
+    // cerco tramite il nome della pizza: in questa sezione è possibile generare
+    // query
+    // https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
+    public List<Pizza> findByNomePizzaContainingIgnoreCase(String nomePizza);
 
 }

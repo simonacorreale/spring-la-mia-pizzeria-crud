@@ -37,12 +37,14 @@ public class MainController {
 
         if (optPizza.isPresent()) {
             model.addAttribute("pizza", pizzaRepository.findById(id).get());
+            return "pizza/show";
 
         } else {
+            model.addAttribute("errorCause",
+                    "Pizza non esiste una pizza con questo id" + id);
             return "redirect:/error/404";
         }
 
-        return "pizza/show";
     }
 
 }

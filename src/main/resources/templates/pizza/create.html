@@ -16,7 +16,8 @@
     <div class="pt-5">
         <h1>Crea una nuova pizza 🍕</h1>
 
-        <form th:action="@{/create}" th:object="${pizza}" method="post">
+        <form th:action="@{/index/create}" th:object="${pizza}" method="post">
+
             <div class="mb-3">
                 <label for="nomePizza" class="form-label">Nome Pizza</label>
                 <input type="text" th:field="*{nomePizza}" class="form-control" id="nomePizza" required>

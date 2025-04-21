@@ -66,7 +66,7 @@ public class MainController {
 
     // Post per la richiesta
     @PostMapping("/create")
-    public String store(@ModelAttribute("book") Pizza formPizza, Model model) {
+    public String store(@ModelAttribute("pizza") Pizza formPizza, Model model) {
 
         // Logica di validazione
         /*
@@ -75,7 +75,7 @@ public class MainController {
          */
         pizzaRepository.save(formPizza);
         // Logica di salvataggio
-        return "redirect/index";
+        return "redirect:/index";
 
     }
 

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div th:replace="fragments/navbar :: navbar('show')"></div>
+    <div th:replace="fragments/navbar :: navbar('index/show')"></div>
 
     <!-- Esercizio di oggi: Spring La Mia Pizzeria - CRUD
 Abbiamo la lista delle pizze, abbiamo i dettagli delle pizze...perchè non realizzare la pagina per la creazione di una nuova pizza?
@@ -22,13 +22,11 @@ Ad esempio verifichiamo che :
 - il prezzo abbia un valore valido (ha senso una pizza con prezzo minore o uguale a zero?)
 Buon lavoro!! -->
 
-    <div class="container" th:object="${pizza}">
+    <div class="container pt-5" th:object="${pizza}">
         <h1 th:text="*{nomePizza}"></h1>
         <div class="row">
             <div class="col-8 mt-5">
                 <dl>
-                    <dt>Nome pizza</dt>
-                    <dd th:text="*{nomePizza}"></dd>
 
                     <dt>Descrizione</dt>
                     <dd th:text="*{descrizione}"></dd>

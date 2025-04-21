@@ -5,17 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
-    <title>🍕Disastro's Pizza</title>
-
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>Error</title>
 </head>
 
 <body>
+    <div class="pt-5">
+        <div class="container pt-5 text-center">
 
+            <div th:replace="fragments/fragments :: navbar"></div>
 
+            <h2>Ci dispiace</h2>
+            <!-- Error -->
+            <h4 th:text="${errorCause}" class="mb-4"></h4>
 
-    <div th:replace="fragments/fragments :: navbar"></div>
-    <h1 th:text="|Errore: ${errorCause}|">Errore durante la ricerca</h1>
-    <a href="/index">Torna alla lista</a>
+            <!-- lottie file embed, centrato -->
+            <div class="d-flex justify-content-center my-4">
+                <lottie-player src="/404.json" background="transparent" speed="1" style="width: 300px; height: 300px;"
+                    loop autoplay>
+                </lottie-player>
+            </div>
+
+            <div class="mt-4">
+                <a href="/index" class="btn btn-primary">Torna alla lista</a>
+            </div>
+
+        </div>
+    </div>
+
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 

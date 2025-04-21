@@ -36,13 +36,11 @@ public class MainController {
         Optional<Pizza> optPizza = pizzaRepository.findById(id);
 
         if (optPizza.isPresent()) {
-            model.addAttribute("pizza", pizzaRepository.findById(id).get());
+            model.addAttribute("pizza", optPizza.get());
             return "pizza/show";
-
         } else {
-            model.addAttribute("errorCause",
-                    "Pizza non esiste una pizza con questo id" + id);
-            return "redirect:/error/404";
+            model.addAttribute("errorCause", "Pizza non esiste nessuna pizza con questo id: " + id);
+            return "error/404"; // NOTA: niente redirect qui!
         }
 
     }

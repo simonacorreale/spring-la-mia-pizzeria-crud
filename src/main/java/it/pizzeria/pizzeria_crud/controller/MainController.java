@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -50,6 +52,30 @@ public class MainController {
             model.addAttribute("errorCause", "Pizza non esiste nessuna pizza con questo id: " + id);
             return "error/404"; // NOTA: niente redirect qui!
         }
+
+    }
+
+    // Get per creare le pizze
+    @GetMapping("/create")
+    public String create(Model model) {
+
+        model.addAttribute("pizza", new Pizza());
+
+        return "pizza/create";
+    }
+
+    // Post per la richiesta
+    @PostMapping("/create")
+    public String store(@ModelAttribute("book") Pizza formPizza, Model model) {
+
+        // Logica di validazione
+        /*
+         * if(!formValidato) ‹
+         * return "/books/create";
+         */
+        pizzaRepository.save(formPizza);
+        // Logica di salvataggio
+        return "redirect/index";
 
     }
 

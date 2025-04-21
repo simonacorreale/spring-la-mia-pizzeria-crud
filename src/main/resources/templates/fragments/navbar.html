@@ -25,8 +25,9 @@
                         <a class="nav-link" th:classAppend="${current == 'index'} ? 'active' : 'not-active'">Pizze</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:classAppend="${current == 'show'} ? 'active' : 'not-active'">Aggiungi
-                            pizza</a>
+                        <a class="nav-link" th:classAppend="${current == 'create'} ? 'active' : 'not-active'"> Aggiungi
+                            pizza
+                        </a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" th:action="@{/index}" method="get">

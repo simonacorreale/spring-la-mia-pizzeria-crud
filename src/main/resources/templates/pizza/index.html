@@ -13,7 +13,7 @@
 <body>
     <!--Devo ricordarmi di mettere il path giusto se creo un file html e una cartella ogni i fragments-->
     <div th:replace="fragments/navbar :: navbar('index')"></div>
-
+    <div></div>
     <div class="pt-5">
         <!--Inizio table-->
         <div th:fragment="table">
@@ -66,8 +66,9 @@
                                     Dettagli
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
-                                <a class="btn btn-outline-primary text-white" th:href="@{|/pizza/edit/${pizza.id}|}">
 
+                                <a class="btn btn-outline-primary text-white"
+                                    th:href="@{/index/edit/{id}(id=${pizza.id})}">
                                     Edit
                                     <i class="fas fa-pen"></i>
                                 </a>

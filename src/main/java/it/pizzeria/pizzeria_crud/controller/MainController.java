@@ -81,4 +81,28 @@ public class MainController {
 
     }
 
+    @GetMapping("/index/edit/{id}")
+    public String getMethodName(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("pizza", pizzaRepository.findById(id).get());
+        return "pizza/edit";
+    }
+
+    @PostMapping("/index/edit/{id}")
+    public String edit(@PathVariable("id") Integer id,
+            @Valid @ModelAttribute("pizza") Pizza formPizza,
+            BindingResult bindingResult,
+            Model model) {
+
+        if (!formPizza.getId().equals(id)) {
+            throw new IllegalArgumentException("ID nel form e ID nell'URL non coincidono");
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "pizza/edit";
+        }
+
+        pizzaRepository.save(formPizza);
+        return "redirect:/index";
+    }
+
 }
